@@ -90,11 +90,11 @@ def patch():
         _xray_traced_sqlalchemy_execute
     )
 
-    wrapt.wrap_function_wrapper(
-        'sqlalchemy.orm.session',
-        'Session.execute',
-        _xray_traced_sqlalchemy_session
-    )
+    #wrapt.wrap_function_wrapper(
+    #    'sqlalchemy.orm.session',
+    #    'Session.execute',
+    #    _xray_traced_sqlalchemy_session
+    #)
 
 
 def unpatch():
@@ -105,4 +105,4 @@ def unpatch():
     _PATCHED_MODULES.discard('sqlalchemy_core')
     import sqlalchemy
     unwrap(sqlalchemy.engine.base.Connection, 'execute')
-    unwrap(sqlalchemy.orm.session.Session, 'execute')
+#    unwrap(sqlalchemy.orm.session.Session, 'execute')
